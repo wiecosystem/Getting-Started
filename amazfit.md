@@ -110,3 +110,33 @@ Most of the amazfit devices aren't in mi home, hence, they aren't in the CSV fil
 | ???                | TONLESAP_O                | ???         | Band/Watch |
 | ???                | TONLESAP_OL               | ???         | Band/Watch |
 | ???                | VULTURE                   | ???         | Band/Watch |
+
+## Protocols
+
+Even if there's many devices, there is not a lot of different protocols. Historically, there was the Mi Bands and the Amazfit watch (aka Amazfit Pace) that had completly different protocols. Since the Amazfit Statos and the Mi Band 2, they created a new protocol that extends with features that devices have or don't have, but the bases are always the same. notes:
+
+* First generation of watches uses a specific protocol ("watch")
+* First generation of (mi) bands (Mi Band /A/S) uses another protocol ("mili") that is extended/tweaked for the amazfit bands
+* Later generation of bands and watches uses a common protocol ("milipro")
+* First generation of scales (Mi Scale) uses a protocol that is extended and a little bit tweaked in later generation scales (Mi Body Composition Scale)
+* All shoes seems to use the same protocol, except for the "Normandy" devices
+* Apparently, amazfit also makes smart tshirt (?!?) with a custom protocol
+* They also have a sensor hub, but i have no idea what it does
+* For some reasons, some devices are dubbed "classic" and seems to extend the base protocol (eg. bolt vs bolt classic)
+
+
+## Reverse engineering
+
+|   Protocol   | Status                                                          |
+|--------------|-----------------------------------------------------------------|
+| Mili         | Widely known and reverse engineered (not documented here yet)   |
+| MiliPro      | Reverse engineered at least partially (not documented here yet) |
+| Watch        | Partially reverse engineered (not documented here yet)          |
+| Weight       | Widely known and reverse engineered (not documented here yet)   |
+| WeightBfs    | Completly reverse engineered                                    |
+| Shoes        | Unknown                                                         |
+| Normandy     | Unknwon                                                         |
+| Bolt         | Unknown                                                         |
+| BoltClassic  | Unknown                                                         |
+| BM           | Unknown                                                         |
+| Amazfit      | Unknown                                                         |
