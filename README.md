@@ -24,10 +24,8 @@ We would also like to explore the Mi Cloud (i.mi.com) that works with MIUI (thei
 
 * Mi Home
 * * Xiaomi's home hub, under Mijia brand
-* Mi Fit
-* * Xiaomi's fitness app, actually made by Huami
-* Amazfit Watch
-* * Huami's own app for the amazfit watches
+* Mi Fit / Amazfit
+* * Xiaomi's fitness app, actually made by Huami, both Amazfit and Mi fit are the same app but with different skin nowadays, but it wasn't always the case
 * Yeelight
 * * Yeelink's own app for their lamps
 * Yi Action
