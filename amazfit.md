@@ -140,3 +140,47 @@ Even if there's many devices, there is not a lot of different protocols. Histori
 | BoltClassic  | Unknown                                                         |
 | BM           | Unknown                                                         |
 | Amazfit      | Unknown                                                         |
+
+## Ingenic Watches
+
+The Amazfit Pace, Stratos, Statos 2, Verge, Verge 2/Sports watch 2, Stratos 3/Sports watch 3 are based on ingenic hardware and software, namely, the newton devkit, based on the ingenic M200S MIPS SoC.
+These watches' protocol is actually the Ingenic one, named "IWDS", it seems based on "IWOP", the Ingenic "open source" platform. Sadly, this platform seems dead, and most of it's ressources are now apparently gone.
+Apparently, Some people @ gadgetbridge tried to work with the SDK, and it doesn't seems to work with the Amazfit watches, so maybe it's a custom derivative of the IWDS protocol. The SDK in the Amazfit app uses 2 native libraries, one of them isn't even in the apk (safeparcel), and the other one apparently doing most of the bluetooth communications. This JNI is obviously written in C++ and apparently uses 3 threads.
+In the Amazfit's app, apparently, there's a background service called "companion" that does most of the data sync between the watch and the app, including it's notifications.
+
+### Libiwds.so
+
+Apparently have these classes (from protektoid):
+* AndroidBtApi
+* AndroidBtDataChannel
+* BleDataChannel
+* BluetoothAdapter
+* BluetoothDevice
+* BluetoothServerSocket
+* BluetoothSocket
+* Client
+* DataChannel
+* InputStream
+* Iwds::Thread
+* OutputStream
+* Reader
+* Sensor
+* SensorDevice
+* SensorEventCallback
+* Server
+* Writer
+
+### Amazfit's customization of the IWDS sdk
+
+Amazfit apparently did some customizations on the IWDS sdk, mostly to apply fixes, but they may have tweaked some core parts (this is currently an unknown). Here's are some changes seen:
+
+* The IWDS initialization have a native call added, classInitNative() a additional method (acquireWakeLock, that gets a standard android WakeLock from PowerManager), and in the JNI, classInitNative() actually seems to get the java method and calls it. This seems to be a fix in cases where the phone will go to sleep during data transfer.
+* The JNI also contains references not seen in the original one, about a watchdog and maybe a additional thread
+
+### SDK Sources
+
+There's some source code in the wild, apparently, the original SDK were released under the GPL licence, so there's maybe a chance to get huami to release their modifications to it, as it falls under the copyleft clause.
+
+* Jar source code: https://github.com/liaokesen168/slpt_send_big_picture/tree/00127e7a2ef802f77941721d9ed5954a078da7e0/iwds/iwds/src/com/ingenic/iwds
+* JNI source code: https://github.com/liaokesen168/slpt_send_big_picture/tree/00127e7a2ef802f77941721d9ed5954a078da7e0/iwds/iwds/jni/src
+* IOS SDK source code: https://github.com/zheoO/Iwds
