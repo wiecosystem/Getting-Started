@@ -6,7 +6,7 @@ It's a list of devices found in `/data/data/com.xiaomi.smarthome/shared_prefs/pl
 
 To give an idea, here's the number of devices by server as of 28/03/2018:
 
-* China: 545
+* China: 1017
 * Europe: 40
 * Hong Kong: 58
 * India: 7
